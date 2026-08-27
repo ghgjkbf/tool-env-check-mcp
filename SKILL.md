@@ -1,6 +1,6 @@
 ---
 name: "tool-location-confirm"
-description: "Ask-before-search tool locator. Invoke BEFORE any disk-wide search when a task needs an external program/tool: quick PATH check, then ask the user if installed and where; if missing offer abort/download/alternative. 触发词：查找工具、找程序、安装在哪。"
+description: "Ask-before-search tool locator. Invoke BEFORE any disk-wide search when a task needs an external program/tool: quick PATH check, then ask the user if installed and where; if missing offer abort/download/alternative. 触发词：查找工具、找程序、安装在哪、依赖缺失确认；隐含场景：发布/提交/存储到仓库、用某程序打开、导出/转换格式等任务背后需要本机程序或仓库时也必须触发。"
 ---
 
 # 工具定位：先问后查（Tool Location Confirm）
@@ -29,6 +29,21 @@ description: "Ask-before-search tool locator. Invoke BEFORE any disk-wide search
 ## 提问模板
 
 「任务需要用到 **{X}**。它是否已安装？安装路径是哪里？」
+
+「这个任务涉及 **{仓库/项目/文件}**。它放在哪个目录？」
+
+## 隐含触发场景（2026-08-27 教训回写）
+
+工具定位需求常常**不直接出现在任务描述里**，而是藏在任务动词背后。以下场景即使没有出现「找工具」字样，也必须触发本技能：
+
+| 任务样例 | 隐含需要定位 |
+|---------|-------------|
+| 「发布/提交/存储到 GitHub 仓库」 | 本地仓库位置 + git 或 GitHub Desktop |
+| 「用 XX 软件打开/处理这个文件」 | 该软件的安装位置 |
+| 「导出为 XX 格式」「压缩/转码」 | 对应处理程序（ffmpeg、magick 等） |
+| 「打包/构建/出包」 | 构建工具链 |
+
+真实教训：「帮忙存储在 GitHub 的仓库里」未触发本技能，Agent 盲探了错误目录，仓库实际位置靠用户事后告知。规则：**任务背后一旦依赖本机程序或仓库，先快查、再询问位置，不默认、不瞎猜。**
 
 ## 答复分流（提问后）
 
