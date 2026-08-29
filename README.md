@@ -1,5 +1,7 @@
 # tool-location-confirm — 先问后查的工具定位技能
 
+> **语言 / Language:** 简体中文 · [English](README.en.md)
+
 > 一个面向 AI Agent 的 [Agent Skill](https://agentskills.spec.ac/)：当任务需要调用外部程序/工具时，禁止全盘扫盘检索——先秒级快查，再向用户确认"装没装、装在哪"；确认不存在时给出三个出口：**终止 / 下载 / 换替代**。
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)

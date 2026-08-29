@@ -3,6 +3,8 @@ name: "tool-location-confirm"
 description: "Ask-before-search tool locator. Invoke BEFORE any disk-wide search when a task needs an external program/tool: quick PATH check, then ask the user if installed and where; if missing offer abort/download/alternative. 触发词：查找工具、找程序、安装在哪、依赖缺失确认；隐含场景：发布/提交/存储到仓库、用某程序打开、导出/转换格式等任务背后需要本机程序或仓库时也必须触发。"
 ---
 
+> **语言 / Language:** 简体中文 · [English](SKILL.en.md)
+
 # 工具定位：先问后查（Tool Location Confirm）
 
 当任务需要调用某个外部程序或工具时，本技能强制「先问后查」：先做秒级快查，再向用户补充询问，绝不以全盘检索作为第一步。
